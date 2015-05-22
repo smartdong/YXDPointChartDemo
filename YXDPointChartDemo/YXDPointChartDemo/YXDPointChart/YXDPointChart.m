@@ -300,8 +300,6 @@
             }
         }
     }
-    
-    self.backgroundColor = [UIColor colorWithRed:233/255. green:233/255. blue:233/255. alpha:1];
 }
 
 //根据当前点的index和所有点数判断当前点应在的位置
