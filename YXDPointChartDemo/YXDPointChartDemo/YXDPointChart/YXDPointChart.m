@@ -268,7 +268,7 @@
                             color = [colorGroup objectAtIndex:([data indexOfObject:arr])%colorGroup.count];
                         }
                         
-                        [self.pointChartView addSubview:[self action_pointWithCenter:CGPointMake(pointX, pointY) radius:pointRadius color:color]];
+                        [self.pointChartView.layer addSublayer:[self action_pointWithCenter:CGPointMake(pointX, pointY) radius:pointRadius color:color]];
                     }
                 }
             }
@@ -295,7 +295,7 @@
                         color = [xColors objectAtIndex:i%xColors.count];
                     }
                     
-                    [self.pointChartView addSubview:[self action_pointWithCenter:CGPointMake(pointX, pointY) radius:pointRadius color:color]];
+                    [self.pointChartView.layer addSublayer:[self action_pointWithCenter:CGPointMake(pointX, pointY) radius:pointRadius color:color]];
                 }
             }
         }
@@ -380,15 +380,16 @@
 }
 
 //画圆点
-- (UIView *) action_pointWithCenter:(CGPoint)center radius:(NSInteger)radius color:(UIColor *)color {
+- (CALayer *) action_pointWithCenter:(CGPoint)center radius:(NSInteger)radius color:(UIColor *)color {
     
-    UIView *point = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2*radius, 2*radius)];
-    point.center = center;
-    point.backgroundColor = color;
-    point.layer.cornerRadius = radius;
-    point.clipsToBounds = YES;
-    point.userInteractionEnabled = NO;
-    return point;
+    CALayer *pointLayer = [CALayer layer];
+    [pointLayer setFrame:CGRectMake(0, 0, 2*radius, 2*radius)];
+    [pointLayer setPosition:center];
+    [pointLayer setMasksToBounds:YES];
+    [pointLayer setBackgroundColor:color.CGColor];
+    [pointLayer setCornerRadius:radius];
+    
+    return pointLayer;
 }
 
 @end
