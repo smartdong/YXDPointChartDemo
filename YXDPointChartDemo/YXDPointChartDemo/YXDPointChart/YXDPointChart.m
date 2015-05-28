@@ -194,7 +194,7 @@
         UIColor *color = (yColors.count == linesCount)?yColors[i]:(yColors.count?yColors[i]:Define_YXDPointChart_Color_Default);
         
         //画线
-        CGRect lineFrame = CGRectMake(0, pointChartFrame.size.height - Define_YXDPointChart_Padding_Bottom - i*linesGap, chartContentWidth?:self.pointChartView.frame.size.width, 0.5);
+        CGRect lineFrame = CGRectMake(0, pointChartFrame.size.height - Define_YXDPointChart_Padding_Bottom - i*linesGap, (chartContentWidth > self.pointChartView.frame.size.width)?chartContentWidth:self.pointChartView.frame.size.width, 0.5);
         [self.pointChartView.layer addSublayer:[self action_lineLayerWithFrame:lineFrame color:color]];
         
         //生成y轴标签
