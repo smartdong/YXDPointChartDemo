@@ -259,7 +259,7 @@
                         //x轴显示标签的中心
                         CGFloat pointX = xLableCenter.x;
                         //计算x值
-                        pointX += [self action_xLengthWithIndex:currentIndex++ count:groupCount];
+                        pointX += [self action_xLengthWithIndex:currentIndex count:groupCount];
                         
                         UIColor *color = Define_YXDPointChart_Color_Default;
                         
@@ -270,6 +270,8 @@
                         
                         [self.pointChartView.layer addSublayer:[self action_pointWithCenter:CGPointMake(pointX, pointY) radius:pointRadius color:color]];
                     }
+                    
+                    currentIndex++;
                 }
             }
             
